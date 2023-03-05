@@ -3,6 +3,8 @@ import { Cell } from './components/Cell'
 
 
 export function App() {
+  const { turn, xState, oState } = useStartGame();
+  
   return (
   <>
       <h1>tic-tac-toe</h1>
