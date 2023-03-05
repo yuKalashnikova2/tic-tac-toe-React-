@@ -1,11 +1,11 @@
 import { Grid } from './components/Grid'
 import { Cell } from './components/Cell'
 import { useStartGame } from './hooks/useStartGame';
-import { hasAttrib } from 'domutils';
+import { Result } from './components/Result'
 
 
 export function App() {
-  const { turn, xState, oState } = useStartGame();
+  const { turn, xState, oState, resultGameText, restartGame } = useStartGame();
 
   function handleClick(index) {
     turn({ id: index });
@@ -17,14 +17,22 @@ export function App() {
 
   return (
   <>
-      <h1>tic-tac-toe</h1>
-      <Grid>
-        {Array.from(Array(9)).map((_, index) => <Cell
-          key={index}
-          value={compare(index)}
-          onClick={() => handleClick(index)}
-        ></Cell>)}
-      </Grid>
+      <h1>❌ Tic-Tac-Toe ⭕</h1>
+      {!!resultGameText ? (
+          <Result>
+            <p>{resultGameText}</p>
+            <button onClick={restartGame}>Reset game</button>
+          </Result>
+        ) : null}
+        <Grid>
+          {Array.from(Array(9)).map((_, index) => (
+            <Cell
+              key={index}
+              value={compare(index)}
+              onClick={() => handleClick(index)}
+            ></Cell>
+          ))}
+        </Grid>
     </>
   )
   }
