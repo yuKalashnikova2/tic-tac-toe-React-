@@ -7,11 +7,15 @@
 body {
     font-family: sans-serif;
 }
+h1 {
+    display: flex
+}
 
 #app {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 100vh;
     background: #4BB1CF;
 }
@@ -23,3 +27,37 @@ body {
     height: 300px;
     background: white;
 }
+
+.cell {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background: #dbdbdb;
+    cursor: pointer;
+}
+.cell:nth-child(-n + 3) {
+    border-top: none;
+  }
+
+.cell:nth-child(3n) {
+    border-right: none;
+  }
+
+  .cell:nth-child(3n+1) {
+    border-left: none;
+  }
+  .cell:nth-last-of-type(-n + 3) {
+    border-bottom: none;
+  }
+  .x::after {
+    content: "❌";
+  }
+  .o::after {
+    content: "⭕";
+  }
