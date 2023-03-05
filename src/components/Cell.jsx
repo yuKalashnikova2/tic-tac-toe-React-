@@ -1,5 +1,6 @@
-export const Cell = ({ id, onClick }) => {
+export const Cell = ({ value, onClick }) => {
+    const activeClassName = value || '';
     return (
-        <div className="cell" onClick={onClick}></div>
+        <div className={`cell ${activeClassName}`} onClick={onClick}></div>
     )
 }
